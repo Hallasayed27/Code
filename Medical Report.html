@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<!-- Designined by CodingLab | www.youtube.com/codinglabyt -->
+<html lang="en" dir="ltr">
+  <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <!--<title> Responsiive Admin Dashboard | CodingLab </title>-->
+    <link rel="stylesheet" href="style.css">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Table's Bootstrap -->
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css' rel='stylesheet'>
+    <link href='https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css' rel='stylesheet'>
+   </head>
+<body>
+  <div class="sidebar bg-danger">
+    <div class="logo-details">
+        <i className="fa-solid fa-heart fa-beat fa-2x m-3 heart " ></i>
+      <span class="logo_name">Pulse <br><span style="color: rgb(250, 250, 100); font-size: 13; font-weight: 100;"> for Doctor</span>
+    </div>
+    <ul class="nav-links">
+        <li>
+          <a href="index.html">
+            <i class='bx bx-home' ></i>
+            <span class="links_name">Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="Schedule.html">
+            <i class='bx bx-list-ul' ></i>
+            <span class="links_name">Schedule</span>
+          </a>
+        </li>
+        <li>
+          <a href="Appointments.html">
+            <i class='bx bx-pie-chart-alt-2' ></i>
+            <span class="links_name">Appointments</span>
+          </a>
+        </li>
+        <li>
+          <a href="Patient.html">
+         
+            <i class='bx bx-user'></i>
+            <span class="links_name">My Patients</span>
+          </a>
+        </li>
+        <li>
+            <a href="Payment.html">
+              <i class='bx bx-card' ></i>
+              <span class="links_name">Payment</span>
+            </a>
+          </li>
+        <li>
+          <a href="Setting.html">
+            <i class='bx bx-cog' ></i>
+            <span class="links_name">Settings</span>
+          </a>
+        </li>
+        <li class="log_out">
+            <a href="Login.html">
+              <i class='bx bx-log-out'></i>
+              <span class="links_name">Log out</span>
+            </a>
+          </li>
+      </ul>
+  </div>
+  <section class="home-section">
+    <nav>
+        
+      <div class="search-box">
+      <input type="text" placeholder="Search...">
+      <i class='bx bx-search' ></i>
+      </div>
+
+      <div>
+        <h3>Welcome, Dr.Ahmed</h3>
+      </div>
+      
+    </nav>
+
+    <div class="home-content">
+    <div class="overview-boxes"></div>
+      <div class="sales-boxes">
+        <div class="recent-sales box">
+          <div class="title">
+            <h2>Medical Report</h2>
+        </div>
+        <br>
+          <div class="sales-details">
+             <input class="form-control w-50" type="text" placeholder="Patient Name"  style="background-color:rgb(245, 243, 243);box-shadow: none; border-radius: 50cm;width: 50cm;"><br>
+             <input class="form-control w-50" type="text" placeholder="Patient ID"  style="background-color:rgb(245, 243, 243);box-shadow: none; border-radius: 50cm;width: 50cm;"><br>
+             <input type="file" id="real-file" hidden="hidden" />
+             <button type="button" id="custom-button">CHOOSE A FILE</button>
+             <span id="custom-text">No file chosen, yet.</span>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div>
+            <button style="border: none; background-color: white; color: rgb(63, 63, 63); "><a href="Patient.html" style="text-decoration: none; color: grey;">Cancel</a></button>
+            <button type="button" class="btn btn-outline-primary" style="background-color: rgb(21, 136, 73) ; 
+                            border-color: rgb(21, 136, 73) ; 
+                            box-shadow: none;
+                            text-decoration-color: white; color:white;"><a href="Patient.html" style="text-decoration: none;color:white;">Done</a></button>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <script>
+
+  const realFileBtn = document.getElementById("real-file");
+  const customBtn = document.getElementById("custom-button");
+  const customTxt = document.getElementById("custom-text");
+
+  customBtn.addEventListener("click", function() {
+  realFileBtn.click();
+  });
+
+  realFileBtn.addEventListener("change", function() {
+   if (realFileBtn.value) {
+    customTxt.innerHTML = realFileBtn.value.match(
+      /[\/\\]([\w\d\s\.\-\(\)]+)$/
+    )[1];
+  } else {
+    customTxt.innerHTML = "No file chosen, yet.";
+  }
+});
+
+  </script>
+  
+ 
+
+</body>
+</html>

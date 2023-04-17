@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<!-- Designined by CodingLab | www.youtube.com/codinglabyt -->
+<html lang="en" dir="ltr">
+  <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <!--<title> Responsiive Admin Dashboard | CodingLab </title>-->
+    <link rel="stylesheet" href="style.css">
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Charts Code-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="styles.css">
+    <!-- Table's Bootstrap -->
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css' rel='stylesheet'>
+    <link href='https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css' rel='stylesheet'>
+    <title>Doctor Dashboard</title>
+   </head>
+<body>
+  <div class="sidebar bg-danger">
+    <div class="logo-details">
+        <i className="fa-solid fa-heart fa-beat fa-2x m-3 heart " ></i>
+      <span class="logo_name">Pulse <br><span style="color: rgb(250, 250, 100); font-size: 13; font-weight: 100;"> for Doctor</span>
+    </div>
+    <ul class="nav-links">
+        <li>
+          <a href="index.html">
+            <i class='bx bx-home' ></i>
+            <span class="links_name">Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="Schedule.html">
+            <i class='bx bx-list-ul' ></i>
+            <span class="links_name">Schedule</span>
+          </a>
+        </li>
+        <li>
+          <a href="Appointments.html">
+            <i class='bx bx-pie-chart-alt-2' ></i>
+            <span class="links_name">Appointments</span>
+          </a>
+        </li>
+        <li>
+          <a href="Patient.html">
+         
+            <i class='bx bx-user'></i>
+            <span class="links_name">My Patients</span>
+          </a>
+        </li>
+        <li>
+            <a href="Payment.html">
+              <i class='bx bx-card' ></i>
+              <span class="links_name">Payment</span>
+            </a>
+          </li>
+        <li>
+          <a href="Setting.html">
+            <i class='bx bx-cog' ></i>
+            <span class="links_name">Settings</span>
+          </a>
+        </li>
+        <li class="log_out">
+          <a href="Login.html">
+            <i class='bx bx-log-out'></i>
+            <span class="links_name">Log out</span>
+          </a>
+        </li>
+      </ul>
+  </div>
+  <section class="home-section">
+    <nav>
+      <div class="search-box">
+      <input type="text" placeholder="Search...">
+      <i class='bx bx-search' ></i>
+      </div>
+
+      <div>
+        <h4>Welcome, Dr.Ahmed</h4>
+      </div>
+    </nav>
+
+    <div class="home-content">
+      <div class="overview-boxes">
+        <div class="box bg-danger">
+          <div class="right-side ">
+            <div class="box-topic">Appointments</div>
+            <div class="number">200</div>
+            <div class="indicator">
+            </div>
+          </div>
+    
+        </div>
+        <div class="box bg-info">
+          <div class="right-side">
+            <div class="box-topic">Total Patiant</div>
+            <div class="number">600</div>
+            <div class="indicator">
+            </div>
+          </div>
+      
+        </div>
+        <div class="box bg-warning">
+          <div class="right-side">
+            <div class="box-topic">Video Call</div>
+            <div class="number">300</div>
+            <div class="indicator">
+            </div>
+          </div>
+        
+        </div>
+        <div class="box bg-success">
+          <div class="right-side">
+            <div class="box-topic">Clinc Consulting</div>
+            <div class="number">100</div>
+            <div class="indicator">
+          
+            
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <br>
+      <div class="charts">
+        <div class="chart">
+            <h2>PERFORMANCE</h2>
+            <div>
+                <canvas id="lineChart"></canvas>
+            </div>
+        </div>
+        <div class="chart doughnut-chart">
+            <h2>GENDER</h2>
+            <div>
+                <canvas id="doughnut"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="home-content">
+    <div class="overview-boxes"></div>
+      <div class="sales-boxes">
+        <div class="recent-sales box">
+          <div class="title"><h2>Today's Appointment</h2></div>
+          <div class="sales-details">
+            <main class="main-container">
+              <div class="main-title">
+                <p class="font-weight-bold"></p>
+              </div>
+          
+              <table id="example" class="table table-striped" style="width:100%">
+                <thead>
+                  <tr>
+                    <th>Patient-ID</th>
+                    <th>Visit-ID</th>
+                    <th>Gender</th>
+                    <th>Type</th>
+                    <th>Date/time</th>
+                    <th>Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>001</td>
+                    <td>223</td>
+                    <td>Male</td>
+                    <td>video call</td>
+                    <td>24/3/2023-11:00pm</td>
+                    <td><button type="button" class="btn btn-outline-primary" style="background-color: rgb(21, 136, 73) ; 
+                      border-color: rgb(21, 136, 73) ; 
+                      box-shadow: none;
+                      text-decoration-color: white; color:white;"><a href="Finished info.html" style="text-decoration: none;color:white;">Finished</a></button></td>
+                  </tr>
+                  <tr>
+                    <td>002</td>
+                    <td>224</td>
+                    <td>Female</td>
+                    <td>Clinic Consulting</td>
+                    <td>24/3/2023-11:00pm</td>
+                    <td><button type="button" class="btn btn-outline-primary" 
+                    style="background-color: rgb(136, 21, 21) ; 
+                      border-color: rgb(136, 21, 21) ; 
+                      box-shadow: none;
+                      text-decoration-color: white; color:white;"><a href="Cancel info.html" style="text-decoration: none;color:white;">Cancelled</a></button></td>
+                  </tr>
+                  <tr>
+                    <td>003</td>
+                    <td>225</td>
+                    <td>Female</td>
+                    <td>Doctor Visit</td>
+                    <td>24/3/2023-11:00pm</td>
+                    <td><button type="button" class="btn btn-outline-primary" style="background-color: rgb(185, 160, 36) ; 
+                      border-color: rgb(185, 160, 36) ; 
+                      box-shadow: none;
+                      text-decoration-color: white; color:white;"><a href="Pending info.html" style="text-decoration: none;color:white;">Pending</a></button></td>
+                  </tr>
+                  <tr>
+                    <td>004</td>
+                    <td>226</td>
+                    <td>Male</td>
+                    <td>video call</td>
+                    <td>24/3/2023-11:00pm</td>
+                    <td><button type="button" class="btn btn-outline-primary" style="background-color: rgb(21, 136, 73) ; 
+                      border-color: rgb(21, 136, 73) ; 
+                      box-shadow: none;
+                      text-decoration-color: white; color:white;"><a href="Finished info.html" style="text-decoration: none;color:white;">Finished</a></button></td>
+                  </tr>
+                  <tr>
+                    <td>005</td>
+                    <td>227</td>
+                    <td>Female</td>
+                    <td>Clinic Consulting</td>
+                    <td>24/3/2023-11:00pm</td>
+                    <td><button type="button" class="btn btn-outline-primary" 
+                    style="background-color: rgb(136, 21, 21) ; 
+                      border-color: rgb(136, 21, 21) ; 
+                      box-shadow: none;
+                      text-decoration-color: white; color:white;"><a href="Cancel info.html" style="text-decoration: none;color:white;">Cancelled</a></button></td>
+                  </tr>
+                  <tr>
+                    <td>006</td>
+                    <td>228</td>
+                    <td>Female</td>
+                    <td>Doctor Visit</td>
+                    <td>24/3/2023-11:00pm</td>
+                    <td><button type="button" class="btn btn-outline-primary" style="background-color: rgb(185, 160, 36) ; 
+                      border-color: rgb(185, 160, 36) ; 
+                      box-shadow: none;
+                      text-decoration-color: white; color:white;"><a href="Pending info.html" style="text-decoration: none;color:white;">Pending</a></button></td>
+                  </tr>
+                  <tr>
+                    <td>007</td>
+                    <td>229</td>
+                    <td>Male</td>
+                    <td>video call</td>
+                    <td>24/3/2023-11:00pm</td>
+                    <td><button type="button" class="btn btn-outline-primary" style="background-color: rgb(21, 136, 73) ; 
+                      border-color: rgb(21, 136, 73) ; 
+                      box-shadow: none;
+                      text-decoration-color: white; color:white;"><a href="Finished info.html" style="text-decoration: none;color:white;">Finished</a></button></td>
+                  </tr>
+                  <tr>
+                    <td>002</td>
+                    <td>224</td>
+                    <td>Female</td>
+                    <td>Clinic Consulting</td>
+                    <td>24/3/2023-11:00pm</td>
+                    <td><button type="button" class="btn btn-outline-primary" 
+                    style="background-color: rgb(136, 21, 21) ; 
+                      border-color: rgb(136, 21, 21) ; 
+                      box-shadow: none;
+                      text-decoration-color: white; color:white;"><a href="Cancel info.html" style="text-decoration: none;color:white;">Cancelled</a></button></td>
+                  </tr>
+                  <tr>
+                    <td>003</td>
+                    <td>225</td>
+                    <td>Female</td>
+                    <td>Doctor Visit</td>
+                    <td>24/3/2023-11:00pm</td>
+                    <td><button type="button" class="btn btn-outline-primary" style="background-color: rgb(185, 160, 36) ; 
+                      border-color: rgb(185, 160, 36) ; 
+                      box-shadow: none;
+                      text-decoration-color: white; color:white;"><a href="Pending info.html" style="text-decoration: none;color:white;">Pending</a></button></td>
+                  </tr>
+                  <tr>
+                    <td>001</td>
+                    <td>223</td>
+                    <td>Male</td>
+                    <td>video call</td>
+                    <td>24/3/2023-11:00pm</td>
+                    <td><button type="button" class="btn btn-outline-primary" style="background-color: rgb(21, 136, 73) ; 
+                      border-color: rgb(21, 136, 73) ; 
+                      box-shadow: none;
+                      text-decoration-color: white; color:white;"><a href="Finished info.html" style="text-decoration: none;color:white;">Finished</a></button></td>
+                  </tr>
+                  <tr>
+                    <td>002</td>
+                    <td>224</td>
+                    <td>Female</td>
+                    <td>Clinic Consulting</td>
+                    <td>24/3/2023-11:00pm</td>
+                    <td><button type="button" class="btn btn-outline-primary" 
+                    style="background-color: rgb(136, 21, 21) ; 
+                      border-color: rgb(136, 21, 21) ; 
+                      box-shadow: none;
+                      text-decoration-color: white; color:white;"><a href="Cancel info.html" style="text-decoration: none;color:white;">Cancelled</a></button></td>
+                  </tr>
+                  <tr>
+                    <td>003</td>
+                    <td>225</td>
+                    <td>Female</td>
+                    <td>Doctor Visit</td>
+                    <td>24/3/2023-11:00pm</td>
+                    <td><button type="button" class="btn btn-outline-primary" style="background-color: rgb(185, 160, 36) ; 
+                      border-color: rgb(185, 160, 36) ; 
+                      box-shadow: none;
+                      text-decoration-color: white; color:white;"><a href="Pending info.html" style="text-decoration: none;color:white;">Pending</a></button></td>
+                  </tr>
+                  <tr>
+                    <td>001</td>
+                    <td>223</td>
+                    <td>Male</td>
+                    <td>video call</td>
+                    <td>24/3/2023-11:00pm</td>
+                    <td><button type="button" class="btn btn-outline-primary" style="background-color: rgb(21, 136, 73) ; 
+                      border-color: rgb(21, 136, 73) ; 
+                      box-shadow: none;
+                      text-decoration-color: white; color:white;"><a href="Finished info.html" style="text-decoration: none;color:white;">Finished</a></button></td>
+                  </tr>
+                  <tr>
+                    <td>002</td>
+                    <td>224</td>
+                    <td>Female</td>
+                    <td>Clinic Consulting</td>
+                    <td>24/3/2023-11:00pm</td>
+                    <td><button type="button" class="btn btn-outline-primary" 
+                    style="background-color: rgb(136, 21, 21) ; 
+                      border-color: rgb(136, 21, 21) ; 
+                      box-shadow: none;
+                      text-decoration-color: white; color:white;"><a href="Cancel info.html" style="text-decoration: none;color:white;">Cancelled</a></button></td>
+                  </tr>
+                  <tr>
+                    <td>003</td>
+                    <td>225</td>
+                    <td>Female</td>
+                    <td>Doctor Visit</td>
+                    <td>24/3/2023-11:00pm</td>
+                    <td><button type="button" class="btn btn-outline-primary" style="background-color: rgb(185, 160, 36) ; 
+                      border-color: rgb(185, 160, 36) ; 
+                      box-shadow: none;
+                      text-decoration-color: white; color:white;"><a href="Pending info.html" style="text-decoration: none;color:white;">Pending</a></button></td>
+                  </tr>
+                  <tr>
+                    <td>001</td>
+                    <td>223</td>
+                    <td>Male</td>
+                    <td>video call</td>
+                    <td>24/3/2023-11:00pm</td>
+                    <td><button type="button" class="btn btn-outline-primary" style="background-color: rgb(21, 136, 73) ; 
+                      border-color: rgb(21, 136, 73) ; 
+                      box-shadow: none;
+                      text-decoration-color: white; color:white;"><a href="Finished info.html" style="text-decoration: none;color:white;">Finished</a></button></td>
+                  </tr>
+                  <tr>
+                    <td>002</td>
+                    <td>224</td>
+                    <td>Female</td>
+                    <td>Clinic Consulting</td>
+                    <td>24/3/2023-11:00pm</td>
+                    <td><button type="button" class="btn btn-outline-primary" 
+                    style="background-color: rgb(136, 21, 21) ; 
+                      border-color: rgb(136, 21, 21) ; 
+                      box-shadow: none;
+                      text-decoration-color: white; color:white;"><a href="Cancel info.html" style="text-decoration: none;color:white;">Cancelled</a></button></td>
+                  </tr>
+                  <tr>
+                    <td>003</td>
+                    <td>225</td>
+                    <td>Female</td>
+                    <td>Doctor Visit</td>
+                    <td>24/3/2023-11:00pm</td>
+                    <td><button type="button" class="btn btn-outline-primary" style="background-color: rgb(185, 160, 36) ; 
+                      border-color: rgb(185, 160, 36) ; 
+                      box-shadow: none;
+                      text-decoration-color: white; color:white;"><a href="Pending info.html" style="text-decoration: none;color:white;">Pending</a></button></td>
+                  </tr>
+                  <tr>
+                    <td>001</td>
+                    <td>223</td>
+                    <td>Male</td>
+                    <td>video call</td>
+                    <td>24/3/2023-11:00pm</td>
+                    <td><button type="button" class="btn btn-outline-primary" style="background-color: rgb(21, 136, 73) ; 
+                      border-color: rgb(21, 136, 73) ; 
+                      box-shadow: none;
+                      text-decoration-color: white; color:white;"><a href="Finished info.html" style="text-decoration: none;color:white;">Finished</a></button></td>
+                  </tr>
+                  <tr>
+                    <td>002</td>
+                    <td>224</td>
+                    <td>Female</td>
+                    <td>Clinic Consulting</td>
+                    <td>24/3/2023-11:00pm</td>
+                    <td><button type="button" class="btn btn-outline-primary" 
+                    style="background-color: rgb(136, 21, 21) ; 
+                      border-color: rgb(136, 21, 21) ; 
+                      box-shadow: none;
+                      text-decoration-color: white; color:white;"><a href="Cancel info.html" style="text-decoration: none;color:white;">Cancelled</a></button></td>
+                  </tr>
+                  <tr>
+                    <td>003</td>
+                    <td>225</td>
+                    <td>Female</td>
+                    <td>Doctor Visit</td>
+                    <td>24/3/2023-11:00pm</td>
+                    <td><button type="button" class="btn btn-outline-primary" style="background-color: rgb(185, 160, 36) ; 
+                      border-color: rgb(185, 160, 36) ; 
+                      box-shadow: none;
+                      text-decoration-color: white; color:white;"><a href="Pending info.html" style="text-decoration: none;color:white;">Pending</a></button></td>
+                  </tr>
+                  <tr>
+                    <td>001</td>
+                    <td>223</td>
+                    <td>Male</td>
+                    <td>video call</td>
+                    <td>24/3/2023-11:00pm</td>
+                    <td><button type="button" class="btn btn-outline-primary" style="background-color: rgb(21, 136, 73) ; 
+                      border-color: rgb(21, 136, 73) ; 
+                      box-shadow: none;
+                      text-decoration-color: white; color:white;"><a href="Finished info.html" style="text-decoration: none;color:white;">Finished</a></button></td>
+                  </tr>
+                  <tr>
+                    <td>002</td>
+                    <td>224</td>
+                    <td>Female</td>
+                    <td>Clinic Consulting</td>
+                    <td>24/3/2023-11:00pm</td>
+                    <td><button type="button" class="btn btn-outline-primary" 
+                    style="background-color: rgb(136, 21, 21) ; 
+                      border-color: rgb(136, 21, 21) ; 
+                      box-shadow: none;
+                      text-decoration-color: white; color:white;"><a href="Cancel info.html" style="text-decoration: none;color:white;">Cancelled</a></button></td>
+                  </tr>
+                  <tr>
+                    <td>003</td>
+                    <td>225</td>
+                    <td>Female</td>
+                    <td>Doctor Visit</td>
+                    <td>24/3/2023-11:00pm</td>
+                    <td><button type="button" class="btn btn-outline-primary" style="background-color: rgb(185, 160, 36) ; 
+                      border-color: rgb(185, 160, 36) ; 
+                      box-shadow: none;
+                      text-decoration-color: white; color:white;"><a href="Pending info.html" style="text-decoration: none;color:white;">Pending</a></button></td>
+                  </tr>
+                  <tr>
+                    <td>001</td>
+                    <td>223</td>
+                    <td>Male</td>
+                    <td>video call</td>
+                    <td>24/3/2023-11:00pm</td>
+                    <td><button type="button" class="btn btn-outline-primary" style="background-color: rgb(21, 136, 73) ; 
+                      border-color: rgb(21, 136, 73) ; 
+                      box-shadow: none;
+                      text-decoration-color: white; color:white;"><a href="Finished info.html" style="text-decoration: none;color:white;">Finished</a></button></td>
+                  </tr>
+                  <tr>
+                    <td>002</td>
+                    <td>224</td>
+                    <td>Female</td>
+                    <td>Clinic Consulting</td>
+                    <td>24/3/2023-11:00pm</td>
+                    <td><button type="button" class="btn btn-outline-primary" 
+                    style="background-color: rgb(136, 21, 21) ; 
+                      border-color: rgb(136, 21, 21) ; 
+                      box-shadow: none;
+                      text-decoration-color: white; color:white;"><a href="Cancel info.html" style="text-decoration: none;color:white;">Cancelled</a></button></td>
+                  </tr>
+                  <tr>
+                    <td>003</td>
+                    <td>225</td>
+                    <td>Female</td>
+                    <td>Doctor Visit</td>
+                    <td>24/3/2023-11:00pm</td>
+                    <td><button type="button" class="btn btn-outline-primary" style="background-color: rgb(185, 160, 36) ; 
+                      border-color: rgb(185, 160, 36) ; 
+                      box-shadow: none;
+                      text-decoration-color: white; color:white;"><a href="Pending info.html" style="text-decoration: none;color:white;">Pending</a></button></td>
+                  </tr>
+                  <tr>
+                    <td>001</td>
+                    <td>223</td>
+                    <td>Male</td>
+                    <td>video call</td>
+                    <td>24/3/2023-11:00pm</td>
+                    <td><button type="button" class="btn btn-outline-primary" style="background-color: rgb(21, 136, 73) ; 
+                      border-color: rgb(21, 136, 73) ; 
+                      box-shadow: none;
+                      text-decoration-color: white; color:white;"><a href="Finished info.html" style="text-decoration: none;color:white;">Finished</a></button></td>
+                  </tr>
+                  <tr>
+                    <td>002</td>
+                    <td>224</td>
+                    <td>Female</td>
+                    <td>Clinic Consulting</td>
+                    <td>24/3/2023-11:00pm</td>
+                    <td><button type="button" class="btn btn-outline-primary" 
+                    style="background-color: rgb(136, 21, 21) ; 
+                      border-color: rgb(136, 21, 21) ; 
+                      box-shadow: none;
+                      text-decoration-color: white; color:white;"><a href="Cancel info.html" style="text-decoration: none;color:white;">Cancelled</a></button></td>
+                  </tr>
+                  <tr>
+                    <td>003</td>
+                    <td>225</td>
+                    <td>Female</td>
+                    <td>Doctor Visit</td>
+                    <td>24/3/2023-11:00pm</td>
+                    <td><button type="button" class="btn btn-outline-primary" style="background-color: rgb(185, 160, 36) ; 
+                      border-color: rgb(185, 160, 36) ; 
+                      box-shadow: none;
+                      text-decoration-color: white; color:white;"><a href="Pending info.html" style="text-decoration: none;color:white;">Pending</a></button></td>
+                  </tr>
+                  <tr>
+                    <td>001</td>
+                    <td>223</td>
+                    <td>Male</td>
+                    <td>video call</td>
+                    <td>24/3/2023-11:00pm</td>
+                    <td><button type="button" class="btn btn-outline-primary" style="background-color: rgb(21, 136, 73) ; 
+                      border-color: rgb(21, 136, 73) ; 
+                      box-shadow: none;
+                      text-decoration-color: white; color:white;"><a href="Finished info.html" style="text-decoration: none;color:white;">Finished</a></button></td>
+                  </tr>
+                  <tr>
+                    <td>002</td>
+                    <td>224</td>
+                    <td>Female</td>
+                    <td>Clinic Consulting</td>
+                    <td>24/3/2023-11:00pm</td>
+                    <td><button type="button" class="btn btn-outline-primary" 
+                    style="background-color: rgb(136, 21, 21) ; 
+                      border-color: rgb(136, 21, 21) ; 
+                      box-shadow: none;
+                      text-decoration-color: white; color:white;"><a href="Cancel info.html" style="text-decoration: none;color:white;">Cancelled</a></button></td>
+                  </tr>
+                  <tr>
+                    <td>003</td>
+                    <td>225</td>
+                    <td>Female</td>
+                    <td>Doctor Visit</td>
+                    <td>24/3/2023-11:00pm</td>
+                    <td><button type="button" class="btn btn-outline-primary" style="background-color: rgb(185, 160, 36) ; 
+                      border-color: rgb(185, 160, 36) ; 
+                      box-shadow: none;
+                      text-decoration-color: white; color:white;"><a href="Pending info.html" style="text-decoration: none;color:white;">Pending</a></button></td>
+                  </tr>
+                  <tr>
+                    <td>001</td>
+                    <td>223</td>
+                    <td>Male</td>
+                    <td>video call</td>
+                    <td>24/3/2023-11:00pm</td>
+                    <td><button type="button" class="btn btn-outline-primary" style="background-color: rgb(21, 136, 73) ; 
+                      border-color: rgb(21, 136, 73) ; 
+                      box-shadow: none;
+                      text-decoration-color: white; color:white;"><a href="Finished info.html" style="text-decoration: none;color:white;">Finished</a></button></td>
+                  </tr>
+                  <tr>
+                    <td>002</td>
+                    <td>224</td>
+                    <td>Female</td>
+                    <td>Clinic Consulting</td>
+                    <td>24/3/2023-11:00pm</td>
+                    <td><button type="button" class="btn btn-outline-primary" 
+                    style="background-color: rgb(136, 21, 21) ; 
+                      border-color: rgb(136, 21, 21) ; 
+                      box-shadow: none;
+                      text-decoration-color: white; color:white;"><a href="Cancel info.html" style="text-decoration: none;color:white;">Cancelled</a></button></td>
+                  </tr>
+                  <tr>
+                    <td>003</td>
+                    <td>225</td>
+                    <td>Female</td>
+                    <td>Doctor Visit</td>
+                    <td>24/3/2023-11:00pm</td>
+                    <td><button type="button" class="btn btn-outline-primary" style="background-color: rgb(185, 160, 36) ; 
+                      border-color: rgb(185, 160, 36) ; 
+                      box-shadow: none;
+                      text-decoration-color: white; color:white;"><a href="Pending info.html" style="text-decoration: none;color:white;">Pending</a></button></td>
+                  </tr>
+                  
+                  
+                  
+                </tbody>
+               </table>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+     
+  </section>
+
+
+        
+  <script>
+   let sidebar = document.querySelector(".sidebar");
+   let sidebarBtn = document.querySelector(".sidebarBtn");
+   sidebarBtn.onclick = function() 
+   {
+   sidebar.classList.toggle("active");
+   if(sidebar.classList.contains("active"))
+   {
+   sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
+   }
+   else
+  sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+   }
+ </script>
+ <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
+ <script src="chart1.js"></script>
+ <script src="chart2.js"></script>
+ <!--------------------------------- table of appointments------------------------------->
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+  $('#example').DataTable();
+});
+</script>
+</body>
+</html>
+
